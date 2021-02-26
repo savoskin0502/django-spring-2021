@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400"
+          rel="stylesheet">
+    <link href="{% static 'css/todo_list.css' %}" rel="stylesheet">
+</head>
+<header class="todo_head">
+    <h3>BFDjango TODO</h3>
+</header>
+<body>
+    <div class="todo_body">
+        <div class="todo_body_main">
+            <button class="add_button">Add Task</button>
+            <h1>{{header_name}} in "List {{tasks_list_name}}"</h1>
+            <table>
+                <tr>
+                    <th>Task</th>
+                    <th>Created</th>
+                    <th>Due on</th>
+                    <th>Owner</th>
+                    <th>Mark</th>
+                </tr>
+                {% for task in tasks%}
+                    <tr>
+                        <td><a href="">{{task.title}}</a></td>
+                        <td>{{task.created}}</td>
+                        <td>{{task.due_on}}</td>
+                        <td>{{task.owner}}</td>
+                        {% if task.mark%}
+                            <td><button>Done</button></td>
+                        {% else %}
+                            <td><button>NotD</button></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <div style="padding-top: 24px">
+                <button style="height: 32px; background: orange; border-radius: 4px">View completed tasks</button>
+                <button style="height: 32px; background: orangered; border-radius: 4px">Delete this list</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
