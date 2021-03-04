@@ -1,0 +1,17 @@
+{#{% extends todo_list.html %}#}
+
+{% block content %}
+    {% for task in tasks %}
+        <tr>
+            <td><a href="">{{task.title}}</a></td>
+            <td>{{task.created}}</td>
+            <td>{{task.due_on}}</td>
+            <td>{{task.owner}}</td>
+            {% if task.mark%}
+                <td><button>Done</button></td>
+            {% else %}
+                <td><button>False</button></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+{% endblock %}
