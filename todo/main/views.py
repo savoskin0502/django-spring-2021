@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
-from django.http import HttpResponse
 import json
 import random
 # Create your views here.
@@ -34,7 +32,7 @@ def get_completed_tasks(request, **kwargs):
     context = get_context(header_name='Completed Tasks',
                           tasks_list_name=kwargs.get('pk'),
                           tasks=list(filter(lambda x: x.get('mark') is True,
-                                  dataset.get(kwargs.get('pk')))))
+                                     dataset.get(kwargs.get('pk')))))
     return render(request, 'todo_list.html', context=context)
 
 
